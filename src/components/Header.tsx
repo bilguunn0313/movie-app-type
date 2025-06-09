@@ -3,12 +3,14 @@ import { Film, Moon, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 // import { HeaderGenre } from "./HeaderGenre";
-// import { SearchInput } from "./SearchInput";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+// import { SearchInput } from "./SearchInput";
+import { ModeToggle } from "./ModeToggle";
+
 // import { ModeToggle } from "./ModeToggle";
 
-export const Header = () => {
+export const Header = (query: string) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex justify-between  md:mx-auto md:w-[1000px]  ">
@@ -25,15 +27,15 @@ export const Header = () => {
           <HeaderGenre />
         </div>
       )} */}
-      {/* {!isOpen && (
+      {!isOpen && (
         <div className="py-4 hidden md:flex gap-4">
-          <HeaderGenre />
+          {/* <HeaderGenre /> */}
 
-          <div className="hidden md:flex">
-            <SearchInput query={query} />
-          </div>
+          {/* <div className="hidden md:flex">
+            <SearchInput />
+          </div> */}
         </div>
-      )} */}
+      )}
       <div className="flex">
         <button
           className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 block lg:hidden"
@@ -57,11 +59,11 @@ export const Header = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        {/* {!isOpen && (
+        {!isOpen && (
           <div className="flex items-center sm:space-x-2">
             <ModeToggle />
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
