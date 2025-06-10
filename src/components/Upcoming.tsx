@@ -1,10 +1,13 @@
 "use client";
-import { Link, MoveRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getUpcoming } from "@/lib/api/getUpcoming";
 import { MovieCard } from "./MovieCard";
+import { MovieType } from "@/types/index";
+import Link from "next/link";
+
 export const Upcoming = () => {
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>([]);
 
   useEffect(() => {
     const getUpcomingMovie = async () => {
@@ -27,9 +30,9 @@ export const Upcoming = () => {
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {upcomingMovies.slice(0, 10).map((movie, index) => {
           return (
-            // <Link href={`/details/${movie.id}`} key={movie.id}>
-            <MovieCard key={index} />
-            // </Link>
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} id={index} />
+            </Link>
           );
         })}
       </div>

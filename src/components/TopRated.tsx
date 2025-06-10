@@ -1,14 +1,13 @@
 "use client";
-import { Link, MoveRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./MovieCard";
 import { getTopRated } from "@/lib/api/getTopRated";
+import Link from "next/link";
+import { MovieType } from "@/types";
 
-// type top = {
-//   results: string;
-// };
 export const TopRated = () => {
-  const [topRated, setTopRated] = useState([]);
+  const [topRated, setTopRated] = useState<MovieType[]>([]);
 
   useEffect(() => {
     const getTopRatedMovie = async () => {
@@ -30,9 +29,9 @@ export const TopRated = () => {
       <div className="md:grid md:grid-cols-3 grid-cols-2 grid lg:grid lg:grid-cols-5 ">
         {topRated.slice(0, 10).map((movie, index) => {
           return (
-            // <Link href={`/details/${movie.id}`} key={movie.id}>
-            <MovieCard key={index} />
-            // </Link>
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard id={index} movie={movie} />
+            </Link>
           );
         })}
       </div>

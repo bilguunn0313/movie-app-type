@@ -1,5 +1,5 @@
 "use client";
-import { Film, Moon, Search } from "lucide-react";
+import { Film, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 // import { HeaderGenre } from "./HeaderGenre";
@@ -10,11 +10,11 @@ import { ModeToggle } from "./ModeToggle";
 
 // import { ModeToggle } from "./ModeToggle";
 
-export const Header = (query: string) => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex justify-between  md:mx-auto md:w-[1000px]  ">
-      <Link href={`/`}>
+      <Link href={`./`}>
         {!isOpen && (
           <div className="flex gap-2 py-4 lg:px-5 pt-6.5">
             <Film className="text-indigo-700" />

@@ -1,12 +1,18 @@
+import { MovieType } from "@/types";
 import { Star } from "lucide-react";
 
-export const MovieCard = () => {
-  //   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
+type MovieProps = {
+  movie: MovieType;
+  id: number;
+};
+
+export const MovieCard = ({ movie }: MovieProps) => {
+  const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
   return (
     <div className="py-4">
       <div className="sm:mx-10 ">
         <img
-          //   src={imageUrl}
+          src={imageUrl}
           alt="card"
           className="max-w-[157px] h-[233.1px] sm:max-w-[229px] md:h-[340px] rounded-md cursor-pointer "
         />
@@ -17,10 +23,10 @@ export const MovieCard = () => {
               fill="rgba(253, 224, 71, 1)"
               className="w-4 "
             />
-            {/* <p>{movie?.vote_average.toFixed(1)}</p> */}
+            <p>{movie?.vote_average.toFixed(1)}</p>
             <p className="text-[#71717a]">/10</p>
           </div>
-          {/* <p className="px-1">{movie?.title}</p> */}
+          <p className="px-1">{movie?.title}</p>
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
+"use client";
 import { useEffect, useState } from "react";
-import { getNowPlaying } from "@/lib/api/getNowPlaying";
-
-import useEmblaCarousel from "embla-carousel-react";
 import * as React from "react";
 import {
   Carousel,
@@ -12,21 +10,20 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { MovieCarouselItem } from "./MovieCarouselItem";
-
-type CarouselProps = {
-  title: string;
-};
+import { MovieType } from "@/types";
+import { getNowPlaying } from "@/lib/api/getNowPlaying";
 
 export const MovieCarousel = () => {
-  const [nowMovie, setNowMovie] = useState([]);
+  const [nowMovie, setNowMovie] = useState<MovieType[]>([]);
 
   useEffect(() => {
-    const NowPlaying = async () => {
+    const nowPlaying = async () => {
       const data = await getNowPlaying();
+      console.log("carus", data);
       setNowMovie(data?.results);
     };
 
-    NowPlaying();
+    nowPlaying();
   }, []);
   return (
     <Carousel
@@ -38,11 +35,13 @@ export const MovieCarousel = () => {
       ]}
     >
       <CarouselContent>
-        {nowMovie?.slice(0, 7).map((movie: CarouselProps, index) => (
-          <CarouselItem key={index}>
-            <MovieCarouselItem />
-          </CarouselItem>
-        ))}
+        {nowMovie.slice(0, 7).map((movie, index) => {
+          return (
+            <CarouselItem key={index}>
+              <MovieCarouselItem movieId={movie.id} movie={movie} />
+            </CarouselItem>
+          );
+        })}
       </CarouselContent>
       <CarouselPrevious className="invisible lg:visible left-10 to-50%" />
       <CarouselNext className="invisible lg:visible right-10 to-50%" />

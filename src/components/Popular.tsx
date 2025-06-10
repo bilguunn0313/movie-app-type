@@ -1,11 +1,13 @@
 "use client";
-import { Link, MoveRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
 import { useEffect, useState } from "react";
 import { getPopular } from "@/lib/api/getPopular";
+import { MovieType } from "@/types";
+import Link from "next/link";
 
 export const Popular = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState<MovieType[]>([]);
 
   useEffect(() => {
     const getPopulars = async () => {
@@ -28,9 +30,9 @@ export const Popular = () => {
       <div className="md:grid md:grid-cols-3 grid grid-cols-2 sm:grid lg:grid lg:grid-cols-5  ">
         {popularMovies.slice(0, 10).map((movie, index) => {
           return (
-            //   <Link href={`/details/${movie.id}`} key={movie.id}>
-            <MovieCard key={index} />
-            //   </Link>
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard id={index} movie={movie} />
+            </Link>
           );
         })}
       </div>
