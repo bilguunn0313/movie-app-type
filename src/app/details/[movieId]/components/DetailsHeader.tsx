@@ -1,16 +1,33 @@
+"use client";
 import { MovieTrailer } from "@/components/MovieTrailer";
+import { getMovieById } from "@/lib/api/getMovieById";
+import { MovieType } from "@/types";
 import { Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
-export const DetailsHeader = () => {
-  //   const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
-  //   const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.backdrop_path}`;
+type MovieProps = {
+  movieIds: MovieType;
+};
+
+export const DetailsHeader = ({ movieIds }: { movieIds: string }) => {
+  const [deMovie, setDeMovie] = useState<MovieProps[]>([]);
+  // const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movieIds?.poster_path}`;
+  // const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movieIds?.backdrop_path}`;
+
+  useEffect(() => {
+    const getMovie = async () => {
+      const data = await getMovieById(movieIds);
+      setDeMovie(data?.results);
+    };
+    getMovie();
+  }, [movieIds]);
 
   return (
     <div className="mx-auto lg:w-[1080px] md:w-[768px] sm:w-[640px] ">
       <div className="pt-8 pb-4 justify-between flex px-5  ">
         <div>
           <h1 className="sm:text-[24px] text-[20px] font-[600]">
-            {/* {movie?.title} */}
+            {/* {movieIds?.title} */}
           </h1>
           <div className="flex">
             {/* <p>{movie?.release_date} ·</p> */}

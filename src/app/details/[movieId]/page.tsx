@@ -7,7 +7,7 @@ const Page = async ({ params }: { params: Promise<{ movieId: string }> }) => {
 
   return (
     <div>
-      <DetailsHeader />
+      <DetailsHeader movieIds={movieId} />
       <DetailsMidSection />
     </div>
   );

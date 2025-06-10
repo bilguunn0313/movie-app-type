@@ -14,7 +14,7 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex justify-between  md:mx-auto md:w-[1000px]  ">
-      <Link href={`./`}>
+      <Link href={`/`}>
         {!isOpen && (
           <div className="flex gap-2 py-4 lg:px-5 pt-6.5">
             <Film className="text-indigo-700" />
