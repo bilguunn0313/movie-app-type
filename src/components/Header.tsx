@@ -2,7 +2,7 @@
 import { Film, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-// import { HeaderGenre } from "./HeaderGenre";
+import { HeaderGenre } from "./HeaderGenre";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // import { SearchInput } from "./SearchInput";
@@ -22,14 +22,14 @@ export const Header = () => {
           </div>
         )}
       </Link>
-      {/* {isOpen && (
+      {isOpen && (
         <div className="flex pr-52 py-4 sm:hidden">
           <HeaderGenre />
         </div>
-      )} */}
+      )}
       {!isOpen && (
         <div className="py-4 hidden md:flex gap-4">
-          {/* <HeaderGenre /> */}
+          <HeaderGenre />
 
           {/* <div className="hidden md:flex">
             <SearchInput />

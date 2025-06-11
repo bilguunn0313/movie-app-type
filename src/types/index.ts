@@ -13,6 +13,12 @@ export type MovieType = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  runtime: number;
+  genres: GenreType;
+};
+export type GenreType = {
+  id: number;
+  name: string;
 };
 
 export type MovieTrailerVideo = {
@@ -26,4 +32,33 @@ export type MovieTrailerVideo = {
   site: string;
   size: number;
   type: string;
+};
+
+export type MovieCasts = {
+  adult: boolean;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  order: number;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+};
+
+export type MovieCrew = {
+  adult: boolean;
+  credit_id: string;
+  department: string;
+  gender: number;
+  id: number;
+  job: string;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
 };

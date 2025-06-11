@@ -13,8 +13,6 @@ import { useEffect, useState } from "react";
 import { MovieTrailerVideo } from "@/types";
 import { getMovieTrailer } from "@/lib/api/getMovieTrailer";
 
-// import { getMovieTrailer } from "@/lib/api/getMovieTrailer";
-
 export const MovieTrailer = ({
   movieId,
   movieTitle,
@@ -34,7 +32,6 @@ export const MovieTrailer = ({
   const movieTrailer = trailer?.find(
     (video) => video.name === "Official Trailer"
   );
-  console.log(trailer);
   return (
     <div className="text-white">
       <Dialog>
