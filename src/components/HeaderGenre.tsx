@@ -5,6 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useEffect, useState } from "react";
 import { getGenre } from "@/lib/api/getGenre";
 import { GenreType, MovieType } from "@/types";
+import { GenreSelect } from "@/app/genre/components/GenreSelect";
 
 export const HeaderGenre = () => {
   const [showGenre, setShowGenre] = useState<GenreType[]>([]);
@@ -12,7 +13,6 @@ export const HeaderGenre = () => {
   useEffect(() => {
     const fetchGenre = async () => {
       const data = await getGenre();
-      console.log("dadsdsad", data);
       setShowGenre(data.genres);
     };
     fetchGenre();
@@ -27,7 +27,7 @@ export const HeaderGenre = () => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="sm:w-[700px] min-w-[320px] sm:h-full ">
-          <div className="px-2">
+          {/* <div className="px-2">
             <h2 className="font-[600] sm:text-[24px] text-[20px] ">Genres</h2>
             <p className="font-[400] text-[16px] ">
               See lists of movies by genre
@@ -36,7 +36,7 @@ export const HeaderGenre = () => {
           <div className="border-1 my-4"></div>
           <div className="flex flex-wrap gap-2  ">
             {showGenre.map((genre) => (
-              <Link href={`/genre/${genre.id}`} key={genre.id}>
+              <Link href={`/genre?genreId=${genre.id}`} key={genre.id}>
                 <Button
                   variant="outline"
                   className="rounded-full mx-1 text-[12px] font-[600] cursor-pointer  "
@@ -46,7 +46,8 @@ export const HeaderGenre = () => {
                 </Button>
               </Link>
             ))}
-          </div>
+          </div> */}
+          <GenreSelect />
         </PopoverContent>
       </Popover>
     </div>

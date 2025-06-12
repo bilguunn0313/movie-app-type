@@ -15,10 +15,17 @@ export type MovieType = {
   vote_count: number;
   runtime: number;
   genres: GenreType;
+  ids: string;
+  names: string;
+  total_results: number;
+  results: [];
+  name: string;
 };
 export type GenreType = {
   id: number;
   name: string;
+  ids: number[];
+  names: string[];
 };
 
 export type MovieTrailerVideo = {

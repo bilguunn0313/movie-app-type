@@ -7,6 +7,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // import { SearchInput } from "./SearchInput";
 import { ModeToggle } from "./ModeToggle";
+import { SearchInput } from "./SearchInput";
 
 // import { ModeToggle } from "./ModeToggle";
 
