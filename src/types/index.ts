@@ -20,6 +20,7 @@ export type MovieType = {
   total_results: number;
   results: [];
   name: string;
+  isSelected: boolean;
 };
 export type GenreType = {
   id: number;
@@ -68,4 +69,12 @@ export type MovieCrew = {
   original_name: string;
   popularity: number;
   profile_path: string;
+};
+
+export type GenreResults = {
+  total_results: number;
+  total_pages: number;
+  results: MovieType[];
+  page: number;
+  variant: string;
 };
